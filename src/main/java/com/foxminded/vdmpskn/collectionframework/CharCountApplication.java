@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class CharCountApplication {
+
     public static void main(String[] args) {
         CharCounter charCounter = new CharCounter();
         Scanner scanner = new Scanner(System.in);
@@ -17,4 +18,5 @@ public class CharCountApplication {
             System.out.println("\"" + entry.getKey() + "\" - " + entry.getValue());
         }
     }
+
 }
