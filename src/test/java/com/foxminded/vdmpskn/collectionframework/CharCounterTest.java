@@ -42,7 +42,10 @@ class CharCounterTest {
     @ParameterizedTest
     @NullAndEmptySource
     void nullOrEmptyInputShouldThrowException(String input) {
-        assertThrows(NullPointerException.class, () -> charCounter.countUniqueCharacters(input));
+        assertThrows(NullPointerException.class, () -> {
+            charCounter.countUniqueCharacters(input);
+            charCounter.charCounterOutput(input);
+        });
     }
 
     @ParameterizedTest
@@ -50,7 +53,21 @@ class CharCounterTest {
     void stringOfSpacesShouldThrowNullPointerException(String input) {
         assertThrows(NullPointerException.class, () -> {
             charCounter.countUniqueCharacters(input);
+            charCounter.charCounterOutput(input);
         });
+    }
+
+    @Test
+    void testCountUniqueCharacters_DuplicateCharacters() {
+        String input = "aabbcc";
+        Map<Character, Integer> expected = new LinkedHashMap<>();
+        expected.put('a', 2);
+        expected.put('b', 2);
+        expected.put('c', 2);
+
+        Map<Character, Integer> result = charCounter.countUniqueCharacters(input);
+
+        assertEquals(expected, result);
     }
 
 

@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class CharCounter {
 
-    private Map<String, Map<Character, Integer>> cache;
+    private final Map<String, Map<Character, Integer>> cache;
 
     public CharCounter() {
         cache = new HashMap<>();
@@ -27,5 +27,14 @@ public class CharCounter {
             return charFrequency;
         }
     }
+    public void charCounterOutput(String input){
+        Map<Character, Integer> charFrequency = countUniqueCharacters(input);
+        System.out.println(input);
+
+        for (Map.Entry<Character, Integer> entry : charFrequency.entrySet()) {
+            System.out.println("\"" + entry.getKey() + "\" - " + entry.getValue());
+        }
+    }
+
 }
 
